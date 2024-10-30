@@ -1,0 +1,29 @@
+/* src/styles/customCheckbox.css */
+.custom-checkbox-box {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    border: 2px solid #d77642;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    position: relative;
+  }
+  
+  .custom-checkbox-box::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 6px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .custom-checkbox input:checked + .custom-checkbox-box::after {
+    opacity: 1;
+  }
+  

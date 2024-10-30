@@ -1,0 +1,54 @@
+/* src/styles/customPriceFilter.css */
+
+/* Style for the price range track */
+.custom-range-track {
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(to right, #d77642 0%, #d77642 50%, #e5e5e5 50%, #e5e5e5 100%);
+    border-radius: 9999px;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+  }
+  
+  .custom-range-track::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #d77642;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .custom-range-track::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background-color: #d77642;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .custom-range-track::-ms-thumb {
+    width: 20px;
+    height: 20px;
+    background-color: #d77642;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Custom style for the right icon next to the range slider */
+  .range-icon {
+    background-color: #d77642;
+    color: white;
+    padding: 8px;
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
