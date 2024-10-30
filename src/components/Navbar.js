@@ -15,17 +15,14 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const sidebarRef = useRef(null);
 
-  // Toggle menu open/close
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  // Close menu function
   const closeMenu = () => {
     setIsOpen(false);
   };
 
-  // Handle click outside to close the sidebar
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
@@ -33,7 +30,6 @@ const Navbar = () => {
       }
     };
 
-    // Add event listener when sidebar is open
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     } else {
@@ -51,10 +47,9 @@ const Navbar = () => {
       initial={{ opacity: 0, y: -50 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
       transition={{ duration: 0.8 }}
-      className="flex items-center justify-between px-4 py-6 bg-transparent absolute w-full z-[999998]"
+      className="flex items-center justify-between px-4 py-6 bg-transparent absolute w-full z-50"
     >
       <div className="flex items-center justify-between w-full">
-        {/* Hide the logo when sidebar is open in mobile view */}
         {!isOpen && (
           <Link href="/" className="text-[#432c24] font-bold text-xl md:block">
             <img
@@ -65,9 +60,7 @@ const Navbar = () => {
           </Link>
         )}
 
-        {/* Hamburger icon for mobile */}
         <div className="flex md:hidden">
-          {/* Hide the hamburger icon when sidebar is open */}
           {!isOpen && (
             <button onClick={toggleMenu} className="text-[#432c24] focus:outline-none z-40">
               <FaBars size={24} />
@@ -75,7 +68,6 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Links visible only on larger screens */}
         <div className="hidden md:flex space-x-6 text-[#432c24]">
           <Link href="/" className="hover:text-orange-500 transition font-serif font-bold duration-300">
             Home
@@ -92,13 +84,11 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile side menu */}
       {isOpen && (
         <div
           ref={sidebarRef}
           className="fixed top-0 right-0 h-full w-2/3 font-serif bg-white shadow-lg z-30 flex flex-col pt-8 text-center"
         >
-          {/* Logo at the top of the sidebar */}
           <Link href="/" onClick={closeMenu} className="text-[#432c24] font-serif font-bold mb-8">
             <img
               src="https://peocock.s3.ap-southeast-2.amazonaws.com/coman/peacock_logo.png"
@@ -107,7 +97,6 @@ const Navbar = () => {
             />
           </Link>
 
-          {/* Close button inside sidebar */}
           <button
             onClick={closeMenu}
             className="absolute top-4 right-4 font-serif font-bold text-[#432c24] focus:outline-none z-50"
@@ -115,7 +104,6 @@ const Navbar = () => {
             <FaTimes size={24} />
           </button>
 
-          {/* Navigation Links centered */}
           <Link
             href="/"
             onClick={closeMenu}

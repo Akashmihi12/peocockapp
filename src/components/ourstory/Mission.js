@@ -4,29 +4,46 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 
+const fadeInLeft = {
+  initial: { opacity: 0, x: -50 },
+  animate: { opacity: 1, x: 0 },
+};
+
+const fadeInRight = {
+  initial: { opacity: 0, x: 50 },
+  animate: { opacity: 1, x: 0 },
+};
+
 const Mission = () => {
   const { ref, inView } = useInView({
     triggerOnce: false,
     threshold: 0.1,
   });
 
+  const missionImage = 'https://peocock.s3.ap-southeast-2.amazonaws.com/ourstory/mission.webp';
+
   return (
     <motion.section
       ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      id="mission-section"
+      initial="initial"
+      animate={inView ? 'animate' : 'initial'}
+      variants={{
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+      }}
       transition={{ duration: 1 }}
-      className="w-full py-16 bg-white flex items-center justify-center"
+      // Reduced vertical padding from py-16 to py-6
+      className="w-full py-6 bg-white flex items-center justify-center"
     >
-      <div className="container mx-auto flex flex-col lg:flex-row items-center">
+      <div className="container mx-auto flex flex-col lg:flex-row items-center px-4 md:px-8">
         <motion.div
-          className="lg:w-1/2 mb-8 lg:mb-0"
-          initial={{ opacity: 0, x: -50 }}
-          animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+          className="lg:w-1/2 w-full mb-8 lg:mb-0"
+          variants={fadeInLeft}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <Image 
-            src="https://peocock.s3.ap-southeast-2.amazonaws.com/ourstory/mission.webp" 
+            src={missionImage} 
             alt="Our Mission" 
             className="rounded-lg"
             width={500}
@@ -36,9 +53,8 @@ const Mission = () => {
         </motion.div>
 
         <motion.div
-          className="lg:w-1/2 lg:pl-12"
-          initial={{ opacity: 0, x: 50 }}
-          animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+          className="lg:w-1/2 w-full lg:pl-12"
+          variants={fadeInRight}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <h2 className="text-3xl font-bold mb-4 font-serif text-[#432c24]">Our Mission</h2>

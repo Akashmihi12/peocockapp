@@ -4,6 +4,16 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 
+const fadeInLeft = {
+  initial: { opacity: 0, x: -50 },
+  animate: { opacity: 1, x: 0 },
+};
+
+const fadeInRight = {
+  initial: { opacity: 0, x: 50 },
+  animate: { opacity: 1, x: 0 },
+};
+
 const protectingImage = 'https://peocock.s3.ap-southeast-2.amazonaws.com/home/Protecting.jpg';
 
 const Protecting = () => {
@@ -16,16 +26,20 @@ const Protecting = () => {
     <motion.section
       ref={ref}
       id="protecting-section"
-      initial={{ opacity: 0 }}
-      animate={inView ? { opacity: 1 } : { opacity: 0 }}
+      initial="initial"
+      animate={inView ? 'animate' : 'initial'}
+      variants={{
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+      }}
       transition={{ duration: 1 }}
-      className="py-16 bg-white"
+      // Reduced vertical padding from py-12 to py-6
+      className="py-6 bg-white"
     >
-      <div className="container mx-auto flex flex-col lg:flex-row items-center">
+      <div className="container mx-auto flex flex-col lg:flex-row items-center px-4 md:px-8">
         <motion.div
-          className="lg:w-1/2 lg:pr-12 mb-8 lg:mb-0"
-          initial={{ opacity: 0, x: -50 }}
-          animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+          className="lg:w-1/2 w-full lg:pr-12 mb-8 lg:mb-0"
+          variants={fadeInLeft}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <h2 className="text-3xl font-bold font-serif mb-4 text-[#432c24]">Protecting Our Planet</h2>
@@ -38,15 +52,15 @@ const Protecting = () => {
         </motion.div>
 
         <motion.div
-          className="lg:w-1/2"
-          initial={{ opacity: 0, x: 50 }}
-          animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+          className="lg:w-1/2 w-full"
+          variants={fadeInRight}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <Image 
             src={protectingImage} 
             alt="Protecting Our Planet" 
             className="rounded-lg"
+            layout="responsive"
             width={500}
             height={500}
           />
