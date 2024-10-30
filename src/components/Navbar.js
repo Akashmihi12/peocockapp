@@ -57,7 +57,11 @@ const Navbar = () => {
         {/* Hide the logo when sidebar is open in mobile view */}
         {!isOpen && (
           <Link href="/" className="text-[#432c24] font-bold text-xl md:block">
-            <img src="/images/coman/peacock_logo.png" alt="Peacock Logo" className="h-8" />
+            <img
+              src="https://peocock.s3.ap-southeast-2.amazonaws.com/coman/peacock_logo.png"
+              alt="Peacock Logo"
+              className="h-8"
+            />
           </Link>
         )}
 
@@ -73,10 +77,18 @@ const Navbar = () => {
 
         {/* Links visible only on larger screens */}
         <div className="hidden md:flex space-x-6 text-[#432c24]">
-          <Link href="/" className="hover:text-orange-500 transition font-serif font-bold duration-300">Home</Link>
-          <Link href="/products" className="hover:text-orange-500 font-serif transition font-bold duration-300">Products</Link>
-          <Link href="/ourstory" className="hover:text-orange-500 font-serif transition font-bold duration-300">Our Story</Link>
-          <Link href="/contact" className="hover:text-orange-500 font-serif transition font-bold duration-300">Contact</Link>
+          <Link href="/" className="hover:text-orange-500 transition font-serif font-bold duration-300">
+            Home
+          </Link>
+          <Link href="/products" className="hover:text-orange-500 font-serif transition font-bold duration-300">
+            Products
+          </Link>
+          <Link href="/ourstory" className="hover:text-orange-500 font-serif transition font-bold duration-300">
+            Our Story
+          </Link>
+          <Link href="/contact" className="hover:text-orange-500 font-serif transition font-bold duration-300">
+            Contact
+          </Link>
         </div>
       </div>
 
@@ -88,25 +100,48 @@ const Navbar = () => {
         >
           {/* Logo at the top of the sidebar */}
           <Link href="/" onClick={closeMenu} className="text-[#432c24] font-serif font-bold mb-8">
-            <img src="/images/coman/peacock_logo.png" alt="Peacock Logo" className="h-12 mx-auto" />
+            <img
+              src="https://peocock.s3.ap-southeast-2.amazonaws.com/coman/peacock_logo.png"
+              alt="Peacock Logo"
+              className="h-12 mx-auto"
+            />
           </Link>
 
           {/* Close button inside sidebar */}
-          <button onClick={closeMenu} className="absolute top-4 right-4 font-serif font-bold text-[#432c24] focus:outline-none z-50">
+          <button
+            onClick={closeMenu}
+            className="absolute top-4 right-4 font-serif font-bold text-[#432c24] focus:outline-none z-50"
+          >
             <FaTimes size={24} />
           </button>
 
           {/* Navigation Links centered */}
-          <Link href="/" onClick={closeMenu} className="text-[#432c24] font-serif font-bold hover:text-orange-500 py-4">
+          <Link
+            href="/"
+            onClick={closeMenu}
+            className="text-[#432c24] font-serif font-bold hover:text-orange-500 py-4"
+          >
             Home
           </Link>
-          <Link href="/products" onClick={closeMenu} className="text-[#432c24] font-bold font-serif hover:text-orange-500 py-4">
+          <Link
+            href="/products"
+            onClick={closeMenu}
+            className="text-[#432c24] font-bold font-serif hover:text-orange-500 py-4"
+          >
             Products
           </Link>
-          <Link href="/ourstory" onClick={closeMenu} className="text-[#432c24] font-bold font-serif hover:text-orange-500 py-4">
+          <Link
+            href="/ourstory"
+            onClick={closeMenu}
+            className="text-[#432c24] font-bold font-serif hover:text-orange-500 py-4"
+          >
             Our Story
           </Link>
-          <Link href="/contact" onClick={closeMenu} className="text-[#432c24] font-bold font-serif hover:text-orange-500 py-4">
+          <Link
+            href="/contact"
+            onClick={closeMenu}
+            className="text-[#432c24] font-bold font-serif hover:text-orange-500 py-4"
+          >
             Contact
           </Link>
         </div>

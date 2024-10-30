@@ -3,7 +3,8 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
-import protectingImage from '/public/images/home/Protecting.jpg';
+
+const protectingImage = 'https://peocock.s3.ap-southeast-2.amazonaws.com/home/Protecting.jpg';
 
 const Protecting = () => {
   const { ref, inView } = useInView({

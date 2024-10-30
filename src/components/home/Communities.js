@@ -3,13 +3,14 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
-import communitiesImage from '/public/images/home/Communities.jpg';
 
 const Communities = () => {
   const { ref, inView } = useInView({
     triggerOnce: false,
     threshold: 0.1,
   });
+
+  const communitiesImage = 'https://peocock.s3.ap-southeast-2.amazonaws.com/home/Communities.jpg';
 
   return (
     <motion.section

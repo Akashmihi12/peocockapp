@@ -30,8 +30,8 @@ const ProductCard = ({ product }) => {
       <h3 className="text-lg font-semibold mb-2">{product.title}</h3>
       <p className="text-gray-500 mb-2">{product.description}</p>
       <StarRating rating={product.rating} />
-      <p className="text-lg font-bold text-orange-500">{product.price}</p>
-      <p className="text-gray-400 line-through">{product.discountedPrice}</p>
+      <p className="text-lg font-bold text-orange-500">${product.price}</p>
+      <p className="text-gray-400 line-through">${product.discountedPrice}</p>
       <button className="bg-[#d77642] text-white px-4 py-2 rounded-full mt-4 hover:bg-[#ffea7a] hover:text-[#432c24] transition duration-300">
         Add to Cart
       </button>

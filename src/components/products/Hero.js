@@ -3,7 +3,9 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
-import productHeroImage from '/public/images/products/product_hero.png';
+
+// S3 URL for the hero image
+const productHeroImage = 'https://peocock.s3.ap-southeast-2.amazonaws.com/products/product_hero.png';
 
 const Hero = () => {
   // Intersection observer to trigger animation when in view

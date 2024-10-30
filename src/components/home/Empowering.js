@@ -3,13 +3,14 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
-import empoweringImage from '/public/images/home/Empowering.jpg';
 
 const Empowering = () => {
   const { ref, inView } = useInView({
     triggerOnce: false,
     threshold: 0.1,
   });
+
+  const empoweringImage = 'https://peocock.s3.ap-southeast-2.amazonaws.com/home/Empowering.jpg';
 
   return (
     <motion.section

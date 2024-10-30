@@ -3,7 +3,8 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
-import joinusImage from '/public/images/home/Joinus.jpg';
+
+const joinusImage = 'https://peocock.s3.ap-southeast-2.amazonaws.com/home/Joinus.jpg';
 
 const Joinus = () => {
   const { ref, inView } = useInView({
@@ -49,7 +50,7 @@ const Joinus = () => {
         >
           <h2 className="text-3xl font-bold font-serif mb-4 text-[#432c24]">Join Us in Making a Difference</h2>
           <p className="mb-6 font-serif text-[#432c24]">
-          Support our mission to empower mothers and uplift communities. Every purchase and contribution helps keep families together, provides sustainable livelihoods, and fosters the growth of thriving communities. Together, we can create lasting change and build a brighter future for the next generation. Join us on this journey of compassion, resilience, and transformation.
+            Support our mission to empower mothers and uplift communities. Every purchase and contribution helps keep families together, provides sustainable livelihoods, and fosters the growth of thriving communities. Together, we can create lasting change and build a brighter future for the next generation. Join us on this journey of compassion, resilience, and transformation.
           </p>
           <motion.button
             onClick={handleShopRedirect} // Simple redirection with window.location.href

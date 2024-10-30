@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from 'framer-motion';
@@ -8,25 +7,25 @@ import { Link } from 'react-scroll'; // Importing Link from react-scroll
 const principles = [
   { 
     title: "Empowering Mothers", 
-    icon: '/images/home/Maternity.jpg', 
+    icon: 'https://peocock.s3.ap-southeast-2.amazonaws.com/home/Maternity.jpg', 
     description: "We honor the strength, care, and resilience of mothers, celebrating their central role in families and communities.",
     link: "empowering-section" // Link to Empowering.js section
   },
   { 
     title: "Rooted in Buddhist Values", 
-    icon: '/images/home/Buddhist.jpg', 
+    icon: 'https://peocock.s3.ap-southeast-2.amazonaws.com/home/Buddhist.jpg', 
     description: "Guided by Buddhist principles, we practice right livelihood, mindfulness, and compassion in all aspects of our work.",
     link: "rooted-section" // Link to Rooted.js section
   },
   { 
     title: "Protecting Our Planet", 
-    icon: '/images/home/Leaf.jpg', 
+    icon: 'https://peocock.s3.ap-southeast-2.amazonaws.com/home/Leaf.jpg', 
     description: "We are committed to environmental sustainability, planting trees and caring for the earth to ensure a thriving future.",
     link: "protecting-section" // Link to Protecting.js section
   },
   { 
     title: "Building Strong Communities", 
-    icon: '/images/home/Family.jpg', 
+    icon: 'https://peocock.s3.ap-southeast-2.amazonaws.com/home/Family.jpg', 
     description: "Our work empowers mothers and uplifts entire communities, fostering economic stability and social cohesion.",
     link: "communities-section" // Link to Communities.js section
   }

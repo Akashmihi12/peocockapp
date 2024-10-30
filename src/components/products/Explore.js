@@ -4,16 +4,20 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import leftArrow from '/public/images/products/left.png';
-import rightArrow from '/public/images/products/right.png';
-import exp1 from '/public/images/products/exp-1.jpg';
-import exp2 from '/public/images/products/exp-2.jpg';
-import exp3 from '/public/images/products/exp-3.jpg';
-import exp4 from '/public/images/products/exp-4.jpg';
-import exp5 from '/public/images/products/exp-5.jpg';
-import exp6 from '/public/images/products/exp-6.jpg';
-import exp7 from '/public/images/products/exp-7.jpg';
-import exp8 from '/public/images/products/exp-8.jpg';
+
+// Image URLs from S3
+const leftArrow = 'https://peocock.s3.ap-southeast-2.amazonaws.com/products/left.png';
+const rightArrow = 'https://peocock.s3.ap-southeast-2.amazonaws.com/products/right.png';
+
+// Category images from S3
+const exp1 = 'https://peocock.s3.ap-southeast-2.amazonaws.com/products/exp-1.jpg';
+const exp2 = 'https://peocock.s3.ap-southeast-2.amazonaws.com/products/exp-2.jpg';
+const exp3 = 'https://peocock.s3.ap-southeast-2.amazonaws.com/products/exp-3.jpg';
+const exp4 = 'https://peocock.s3.ap-southeast-2.amazonaws.com/products/exp-4.jpg';
+const exp5 = 'https://peocock.s3.ap-southeast-2.amazonaws.com/products/exp-5.jpg';
+const exp6 = 'https://peocock.s3.ap-southeast-2.amazonaws.com/products/exp-6.jpg';
+const exp7 = 'https://peocock.s3.ap-southeast-2.amazonaws.com/products/exp-7.jpg';
+const exp8 = 'https://peocock.s3.ap-southeast-2.amazonaws.com/products/exp-8.jpg';
 
 // Sample data for categories
 const categories = [
@@ -147,8 +151,8 @@ const Explore = () => {
             <Image
               src={leftArrow}
               alt="Previous"
-              width={24}  // Change this value to adjust the width
-              height={24} // Change this value to adjust the height
+              width={24}  // Adjust the width as needed
+              height={24} // Adjust the height as needed
             />
           </motion.div>
 
@@ -200,8 +204,8 @@ const Explore = () => {
             <Image
               src={rightArrow}
               alt="Next"
-              width={24}  // Change this value to adjust the width
-              height={24} // Change this value to adjust the height
+              width={24}  // Adjust the width as needed
+              height={24} // Adjust the height as needed
             />
           </motion.div>
         </div>

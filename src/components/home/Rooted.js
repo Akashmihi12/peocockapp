@@ -3,7 +3,8 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
-import rootedImage from '/public/images/home/Rooted.jpg';
+
+const rootedImage = 'https://peocock.s3.ap-southeast-2.amazonaws.com/home/Rooted.jpg';
 
 const Rooted = () => {
   const { ref, inView } = useInView({

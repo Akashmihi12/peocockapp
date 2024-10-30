@@ -4,9 +4,6 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import craftedImage from '/public/images/home/Crafted.jpg';
-import craftedLeft from '/public/images/home/Crafted_left.jpg';
-import craftedRight from '/public/images/home/Crafted_right.jpg';
 
 // Sample component for star ratings
 const StarRating = () => {
@@ -22,6 +19,11 @@ const products = [
   { id: 5, title: "Chilly Kokis 500g", price: "250LKR" },
   { id: 6, title: "Chilly Kokis 600g", price: "250LKR" },
 ];
+
+// Image URLs from S3
+const craftedImage = 'https://peocock.s3.ap-southeast-2.amazonaws.com/home/Crafted.jpg';
+const craftedLeft = 'https://peocock.s3.ap-southeast-2.amazonaws.com/home/Crafted_left.jpg';
+const craftedRight = 'https://peocock.s3.ap-southeast-2.amazonaws.com/home/Crafted_right.jpg';
 
 // Variants for sliding animations
 const slideVariants = {
