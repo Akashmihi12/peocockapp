@@ -1,27 +1,25 @@
-// src/app/product_cart/[slug]/page.js
-
 "use client";
 
-import { use } from 'react'; // Import the `use` function from React
+import { use } from 'react';
 import Navbar from '../../../components/Navbar';
 import Footer from '../../../components/Footer';
 import ProductDetails from '../../../components/product_cart/ProductDetails';
-import { products } from '../../../components/products/AllProducts'; // Adjust path as necessary
+import Feedback from '../../../components/product_cart/Feedback';
+import { products } from '../../../components/products/AllProducts';
 
 const ProductCartPage = ({ params }) => {
-  // Use `React.use()` to unwrap `params`
-  const { slug } = use(params);
+  const { slug } = use(params); // Unwrap params with React.use()
 
-  // Find the product based on slug
   const product = products.find((p) => p.title.toLowerCase().replace(/\s+/g, '-') === slug);
 
   if (!product) return <p>Product not found</p>;
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main className="container mx-auto py-8">
+      <main className="container mx-auto py-8 flex-grow mt-16"> {/* Increased mt-16 for more spacing */}
         <ProductDetails product={product} />
+        <Feedback feedbacks={product.feedbacks} />
       </main>
       <Footer />
     </div>
