@@ -1,3 +1,5 @@
+// src/components/product_cart/ProductDetails.js
+
 import Image from 'next/image';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -25,8 +27,7 @@ const ProductDetails = ({ product }) => {
 
     // Save to localStorage
     const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
-    const updatedCart = [...existingCart, cartItem];
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
+    localStorage.setItem('cart', JSON.stringify([...existingCart, cartItem]));
 
     // Redirect to the add_to_cart page
     router.push('/add_to_cart');

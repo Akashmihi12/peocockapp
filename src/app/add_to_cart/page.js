@@ -2,44 +2,58 @@
 
 "use client";
 
+import { useState, useEffect } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import CartItem from '../../components/add_to_cart/CartItem';
 import OrderSummary from '../../components/add_to_cart/OrderSummary';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 
 const AddToCartPage = () => {
-  const router = useRouter();
+  const [cartItems, setCartItems] = useState([]);
 
-  // Example cart data
-  const [cartItems, setCartItems] = useState([
-    { id: 1, title: 'Product 01', price: 149.99, size: '1kg', quantity: 1, image: 'https://peocock.s3.ap-southeast-2.amazonaws.com/products/pro-1.jpg' },
-    { id: 2, title: 'Product 02', price: 169.99, size: '500g', quantity: 1, image: 'https://peocock.s3.ap-southeast-2.amazonaws.com/products/pro-2.jpg' },
-  ]);
+  useEffect(() => {
+    // Retrieve cart data from localStorage
+    const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    setCartItems(storedCart);
+  }, []);
+
+  const handleQuantityChange = (id, newQuantity) => {
+    const updatedCart = cartItems.map((item) =>
+      item.id === id ? { ...item, quantity: newQuantity } : item
+    );
+    setCartItems(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart)); // Update localStorage
+  };
 
   const handleRemoveItem = (id) => {
-    setCartItems(cartItems.filter(item => item.id !== id));
+    const updatedCart = cartItems.filter((item) => item.id !== id);
+    setCartItems(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart)); // Update localStorage
   };
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main className="container mx-auto py-8 flex-grow">
-        <h1 className="text-3xl font-semibold mb-4" style={{ color: 'rgb(78, 52, 46)' }}>Cart</h1>
+      <main className="container mx-auto py-8 flex-grow mt-16">
+        <h1 className="text-3xl font-semibold mb-4" style={{ color: 'rgb(78, 52, 46)' }}>
+          Cart <span className="text-gray-500 text-lg">({cartItems.length} ITEMS)</span>
+        </h1>
 
         <div className="flex flex-col lg:flex-row gap-12">
-          {/* Cart Items Section */}
-          <div className="w-full lg:w-2/3">
-            {cartItems.map(item => (
-              <CartItem key={item.id} item={item} onRemove={() => handleRemoveItem(item.id)} />
+          <div className="w-full lg:w-2/3 p-6 bg-white rounded-lg shadow-md">
+            {cartItems.map((item) => (
+              <CartItem
+                key={item.id}
+                item={item}
+                onQuantityChange={handleQuantityChange}
+                onRemove={handleRemoveItem}
+              />
             ))}
+            <div className="mt-6 p-4 bg-gray-50 rounded-lg text-sm text-gray-700">
+              <p>10% Instant Discount with Federal Bank Debit Cards on a minimum spend of $150. T&C Apply.</p>
+            </div>
           </div>
-
-          {/* Order Summary Section */}
-          <div className="w-full lg:w-1/3">
-            <OrderSummary cartItems={cartItems} />
-          </div>
+          <OrderSummary cartItems={cartItems} />
         </div>
       </main>
       <Footer />
