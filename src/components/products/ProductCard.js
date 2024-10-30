@@ -1,12 +1,16 @@
+// src/components/ProductCard.js
+
 "use client"; // Add this if ProductCard is using any client-side logic (hooks)
+
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 // Star rating component
 const StarRating = ({ rating }) => {
   return (
     <div className="flex justify-center mb-2">
-      {[...Array(5)].map((star, index) => (
+      {[...Array(5)].map((_, index) => (
         <span key={index} className={`text-orange-400 ${index < rating ? 'text-xl' : 'text-gray-300'}`}>
           ★
         </span>
@@ -16,6 +20,13 @@ const StarRating = ({ rating }) => {
 };
 
 const ProductCard = ({ product }) => {
+  const router = useRouter();
+  const slug = product.title.toLowerCase().replace(/\s+/g, '-');
+
+  const handleAddToCart = () => {
+    router.push(`/product_cart/${slug}`);
+  };
+
   return (
     <motion.div
       className="bg-white p-4 rounded-lg shadow-lg text-center"
@@ -32,7 +43,11 @@ const ProductCard = ({ product }) => {
       <StarRating rating={product.rating} />
       <p className="text-lg font-bold text-orange-500">${product.price}</p>
       <p className="text-gray-400 line-through">${product.discountedPrice}</p>
-      <button className="bg-[#d77642] text-white px-4 py-2 rounded-full mt-4 hover:bg-[#ffea7a] hover:text-[#432c24] transition duration-300">
+
+      <button
+        onClick={handleAddToCart}
+        className="bg-[#d77642] text-white px-4 py-2 rounded-full mt-4 hover:bg-[#ffea7a] hover:text-[#432c24] transition duration-300"
+      >
         Add to Cart
       </button>
     </motion.div>

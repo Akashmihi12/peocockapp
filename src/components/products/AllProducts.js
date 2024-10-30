@@ -1,3 +1,5 @@
+// src/components/products/AllProducts.js
+
 "use client"; // Add this to mark the file as a client component
 
 import { useState, useEffect } from 'react';
@@ -5,7 +7,7 @@ import { motion } from 'framer-motion';
 import ProductCard from './ProductCard';
 
 // Updated product data with S3 image URLs
-const products = [
+export const products = [
   { id: 1, title: 'Product 1', description: 'Best of the best product in the market.', price: 120, discountedPrice: 150, rating: 5, image: 'https://peocock.s3.ap-southeast-2.amazonaws.com/products/pro-1.jpg', category: 'Category 1' },
   { id: 2, title: 'Product 2', description: 'High quality and affordable product.', price: 100, discountedPrice: 130, rating: 4, image: 'https://peocock.s3.ap-southeast-2.amazonaws.com/products/pro-2.jpg', category: 'Category 2' },
   { id: 3, title: 'Product 3', description: 'Top-notch product with great value.', price: 80, discountedPrice: 100, rating: 5, image: 'https://peocock.s3.ap-southeast-2.amazonaws.com/products/pro-3.jpg', category: 'Category 3' },
