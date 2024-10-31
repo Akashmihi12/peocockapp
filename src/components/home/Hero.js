@@ -2,9 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { useEffect, useRef } from 'react';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import * as THREE from 'three';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 50 },
@@ -22,63 +19,6 @@ const Hero = () => {
     threshold: 0.1,
   });
 
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    if (canvasRef.current) {
-      // Set up the scene
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(75, canvasRef.current.clientWidth / canvasRef.current.clientHeight, 0.1, 1000);
-      camera.position.z = 5;
-
-      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-      renderer.setSize(canvasRef.current.clientWidth, canvasRef.current.clientHeight);
-      canvasRef.current.appendChild(renderer.domElement);
-
-      // Load the 3D model
-      const loader = new GLTFLoader();
-      loader.load(
-        'https://peocock.s3.ap-southeast-2.amazonaws.com/home/heroearth.glb',
-        (gltf) => {
-          const model = gltf.scene;
-          model.scale.set(0.5, 0.5, 0.5);
-          scene.add(model);
-
-          // Animation loop
-          const animate = () => {
-            requestAnimationFrame(animate);
-            model.rotation.y += 0.005;
-            renderer.render(scene, camera);
-          };
-
-          animate();
-        },
-        undefined,
-        (error) => {
-          console.error('An error occurred while loading the 3D model:', error);
-        }
-      );
-
-      // Handle resizing
-      const handleResize = () => {
-        if (canvasRef.current) {
-          camera.aspect = canvasRef.current.clientWidth / canvasRef.current.clientHeight;
-          camera.updateProjectionMatrix();
-          renderer.setSize(canvasRef.current.clientWidth, canvasRef.current.clientHeight);
-        }
-      };
-
-      window.addEventListener('resize', handleResize);
-
-      return () => {
-        window.removeEventListener('resize', handleResize);
-        if (canvasRef.current) {
-          canvasRef.current.removeChild(renderer.domElement);
-        }
-      };
-    }
-  }, [canvasRef]);
-
   return (
     <motion.section
       ref={ref}
@@ -89,11 +29,9 @@ const Hero = () => {
         animate: { opacity: 1 },
       }}
       transition={{ duration: 1 }}
-      className="relative w-full h-screen overflow-hidden"
+      className="relative w-full h-screen overflow-hidden bg-cover bg-center"
+      style={{ backgroundImage: 'url(https://peocock.s3.ap-southeast-2.amazonaws.com/home/home_hero.webp)' }}
     >
-      {/* 3D Model Canvas */}
-      <div ref={canvasRef} className="absolute inset-0 z-0" />
-
       {/* Overlay and Content */}
       <motion.div
         className="absolute inset-0 flex flex-col items-start justify-center text-left z-10 px-6 md:px-16 lg:px-24"
